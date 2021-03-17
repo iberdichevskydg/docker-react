@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services:
+  - dockerfile
+
+before_install:
+  - docker image build -t igorberdich/docker-react -f Dockerfile.dev .
+  
+script:
+  - docker run -e CI=true igorberdich/docker-react npm run test
